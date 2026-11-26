@@ -1,5 +1,17 @@
 # Deployment and rollback
 
+## Initial release
+
+Published on November 26, 2026 through Cloudflare Builds from `mainframe`.
+The first serving version is `89424173-6e84-41bf-a015-cf365d0fec67`.
+The saga and all five comic pages were verified in the live browser at
+[the Worker URL](https://villagealchemist-art.mjohnson1307.workers.dev/hereeesjohnnyson/).
+
+At release, the `.art` apex remained a proxied A record pointing to
+`162.255.119.85`, with no Worker routes. No DNS changes were made. Attaching the
+apex to the new Worker requires explicit approval; keep the existing `www` and
+email records untouched.
+
 ## Release boundary
 
 This repository owns the standalone art site and its dedicated Worker,

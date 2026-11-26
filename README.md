@@ -56,8 +56,13 @@ verified before adding it to `wrangler.jsonc`. A repository name does not bind a
 domain. See [deployment notes](docs/deployment.md).
 
 GitHub Actions runs checks and a deployment dry run on pull requests and pushes.
-It does not publish. Cloudflare Builds can later be connected to this repo using
-`mainframe`, build command `npm run check`, and deploy command `npm run deploy`.
+Cloudflare Builds is connected to this repo using `mainframe`, Node 26, build
+command `npm run check`, and deploy command `npm run deploy`. Feature-branch
+preview builds are enabled separately.
+
+The published site is at
+[villagealchemist-art.mjohnson1307.workers.dev](https://villagealchemist-art.mjohnson1307.workers.dev/).
+The `.art` custom domain is pending approval.
 
 ## Add an issue
 
