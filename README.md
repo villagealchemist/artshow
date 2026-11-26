@@ -40,6 +40,15 @@ and checks local links and anchors. The README image in `ASSets/` is repository
 material, not a deployed site asset. Private photographs and source archives
 must stay outside this repository.
 
+## Change fonts and type sizes
+
+Edit the first `:root` block in `styles.css`, the site's only stylesheet.
+`--font-body` controls prose, `--font-heading` inherits it by default, and
+`--font-detail` controls small navigation and issue labels. `--text-title`,
+`--text-heading`, `--text-body`, and `--text-small` define the complete type scale.
+There are no per-page font overrides. Layout rules live below the shared type
+rules, so changing fonts does not require editing component styles.
+
 ## Publish
 
 The production branch is `mainframe`. The dedicated Worker is
