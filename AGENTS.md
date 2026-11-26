@@ -6,6 +6,9 @@ The independent villagealchemist art site. Production branch: `mainframe`.
   including page titles, metadata, accessible labels, copy, and documentation.
 - Keep this a lightweight static HTML/CSS site. Executable source is TypeScript.
 - Preserve the plum, lilac, silver, serif, and monospace design language.
+- Keep typography in the first section of `styles.css`, the single stylesheet.
+  Use its shared font and size variables; do not add component or page-specific
+  font overrides, forced uppercase titles, or decorative title treatments.
 - Preserve the five approved comic images byte for byte and in order.
 - Never add private photographs, source archives, or lore manifests to this repo.
 - Do not inspect, import, or modify `sites/jux` in any related checkout.

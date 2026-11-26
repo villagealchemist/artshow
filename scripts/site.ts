@@ -41,7 +41,6 @@ export const copiedFiles = [
   "_redirects",
   "styles.css",
   "heresjohnnyson/index.html",
-  "heresjohnnyson/styles.css",
   "heresjohnnyson/issue-01/index.html",
   ...comicPages.map(([file]) => file),
 ] as const;

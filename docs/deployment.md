@@ -20,8 +20,8 @@ This repository owns the standalone art site and its dedicated Worker,
 `villagealchemist-art`. Never deploy it under the name `villagealchemist`.
 The latter serves the separate `.com` website.
 
-The allowlisted build contains exactly 17 files: eight HTML documents (including
-four copies for the page addresses), two stylesheets, five original WebP comic
+The allowlisted build contains exactly 16 files: eight HTML documents (including
+four copies for the page addresses), one stylesheet, five original WebP comic
 pages, the redirect rules, and one compiled reader script. It contains no
 private photo archive, manifests, README screenshot, build tools, or API code.
 

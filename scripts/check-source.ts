@@ -47,7 +47,11 @@ async function inspect(directory: string): Promise<void> {
     if (binaryExtensions.has(extension)) continue;
     const content = await readFile(file, "utf8");
     checked++;
-    for (const match of content.matchAll(/\bvillage[\s_-]*alchemist\b/gi)) {
+    const brandText =
+      extension === ".html"
+        ? `${content}\n${content.replace(/<[^>]*>/g, "")}`
+        : content;
+    for (const match of brandText.matchAll(/\bvillage[\s_-]*alchemist\b/gi)) {
       if (match[0] !== "villagealchemist")
         failures.push(`${file}: the name must be exactly villagealchemist`);
     }
