@@ -28,7 +28,7 @@ private photo archive, manifests, README screenshot, build tools, or API code.
 ## Before release
 
 1. Run `npm ci`, `npm run check`, and `npm run deploy -- --dry-run`.
-2. Inspect `/`, `/heresjohnnyson/`, and `/heresjohnnyson/issue-01/` at desktop
+2. Inspect `/`, `/heresjohnnyson/`, and `/heresjohnnyson/about/` at desktop
    and mobile sizes. Read all five pages in order and test the text disclosures.
 3. Verify the account with `npx wrangler whoami`, then inspect the existing
    Worker's domains and deployments. Record the current art Worker version
@@ -49,17 +49,17 @@ The committed route keeps subsequent deployments aligned with the dashboard:
 ]
 ```
 
-The public URLs are `/heresjohnnyson/` and `/heresjohnnyson/issue-01/` on that
-domain. `_redirects` preserves the earlier `/hereeesjohnnyson/` spelling,
-including nested issue and image URLs. Verify HTTPS and both new URLs after
-every domain or routing change.
+The comic opens directly at `/heresjohnnyson/`. Its introduction and dedication
+remain available at `/heresjohnnyson/about/`. `_redirects` preserves the earlier
+`/hereeesjohnnyson/` spelling and issue paths. Verify HTTPS, legacy redirects,
+and direct page addresses after routing changes.
 
 The reader adds one e before the r for each illustrated page, from
-`/heresjohnnyson/issue-01/#page-01` to
-`/heeeeeresjohnnyson/issue-01/#page-05`. It replaces the current history entry as
-the reader scrolls. Every spelling serves the same complete issue, so refresh
-and shared links work. The shorter page 2-5 root addresses redirect to their
-matching reader pages. The one-e root remains the saga homepage.
+`/heresjohnnyson/` to `/heeeeeresjohnnyson/`. These are complete addresses, with
+no issue suffix or page fragment. It replaces the current history entry as the
+reader scrolls. Every spelling serves the complete issue, so refresh and
+shared links work. Older page fragments still locate their illustration before
+the enhancement replaces them with the matching clean address.
 
 Before this domain and reader update, the serving art Worker version was
 `f5e84341-e1c3-40ad-a033-b9f76cd6fe87`.

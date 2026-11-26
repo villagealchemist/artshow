@@ -9,6 +9,8 @@ The independent villagealchemist art site. Production branch: `mainframe`.
 - Keep typography in the first section of `styles.css`, the single stylesheet.
   Use its shared font and size variables; do not add component or page-specific
   font overrides, forced uppercase titles, or decorative title treatments.
+- Comic page URLs use only the e-count slug and trailing slash. Keep issue
+  numbers in the copy, without appending issue paths or page fragments.
 - Preserve the five approved comic images byte for byte and in order.
 - Never add private photographs, source archives, or lore manifests to this repo.
 - Do not inspect, import, or modify `sites/jux` in any related checkout.

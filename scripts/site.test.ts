@@ -43,7 +43,7 @@ await test("rejects modified artwork", async (t) => {
 
 await test("rejects missing or reordered comic pages", async (t) => {
   const dist = await fixture(t);
-  const file = path.join(dist, "heresjohnnyson/issue-01/index.html");
+  const file = path.join(dist, "heresjohnnyson/index.html");
   const html = await readFile(file, "utf8");
   await writeFile(
     file,
@@ -70,7 +70,7 @@ await test("rejects broken internal links and anchors", async (t) => {
 
 await test("rejects unapproved scripts on every reader address", async (t) => {
   const dist = await fixture(t);
-  const file = path.join(dist, "heeeresjohnnyson/issue-01/index.html");
+  const file = path.join(dist, "heeeresjohnnyson/index.html");
   const html = await readFile(file, "utf8");
   await writeFile(
     file,
