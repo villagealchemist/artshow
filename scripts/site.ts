@@ -1,0 +1,136 @@
+import { createHash } from "node:crypto";
+import {
+  copyFile,
+  lstat,
+  mkdir,
+  readdir,
+  readFile,
+  rm,
+} from "node:fs/promises";
+import path from "node:path";
+
+// SHA-256 values of the five approved images, preserved from the supplied ZIP.
+export const comicPages = [
+  [
+    "hereeesjohnnyson/assets/page-01.webp",
+    "d302eac69a5a5e2cc3ce72b0c77faaa98d119df820f10234317dfa91ed0c6aa5",
+  ],
+  [
+    "hereeesjohnnyson/assets/page-02.webp",
+    "1b756ab78f15e8f79c8ce4eb3eb2857cbd56dbf81c4fd793f541c7ded5db4ce2",
+  ],
+  [
+    "hereeesjohnnyson/assets/page-03.webp",
+    "e7d1cfc3457040bfd00a92871887ee1b4421c80ff4c1e638fcd6ea12e037ac62",
+  ],
+  [
+    "hereeesjohnnyson/assets/page-04.webp",
+    "d89938e13a926d6cdb1cd3a17ade437a43ef8e458e8f75bd9f08e09456046620",
+  ],
+  [
+    "hereeesjohnnyson/assets/page-05.webp",
+    "2e03b2853818b7a5d1cf601325a5f6d2047a074152f9452f6204b435422e4fba",
+  ],
+] as const;
+
+export const publicFiles = [
+  "index.html",
+  "404.html",
+  "styles.css",
+  "hereeesjohnnyson/index.html",
+  "hereeesjohnnyson/styles.css",
+  "hereeesjohnnyson/issue-01/index.html",
+  ...comicPages.map(([file]) => file),
+] as const;
+
+async function listFiles(directory: string, prefix = ""): Promise<string[]> {
+  const files: string[] = [];
+  for (const entry of await readdir(directory, { withFileTypes: true })) {
+    const relative = path.posix.join(prefix, entry.name);
+    if (entry.isDirectory()) {
+      files.push(
+        ...(await listFiles(path.join(directory, entry.name), relative)),
+      );
+    } else if (entry.isFile()) {
+      files.push(relative);
+    } else {
+      throw new Error(`Non-regular deployment asset: ${relative}`);
+    }
+  }
+  return files.sort();
+}
+
+export async function verifySite(dist: string): Promise<void> {
+  const actual = await listFiles(dist);
+  if (JSON.stringify(actual) !== JSON.stringify([...publicFiles].sort())) {
+    throw new Error(`Unexpected dist contents:\n${actual.join("\n")}`);
+  }
+
+  for (const [file, expectedHash] of comicPages) {
+    const content = await readFile(path.join(dist, file));
+    if (createHash("sha256").update(content).digest("hex") !== expectedHash) {
+      throw new Error(`Original comic artwork changed: ${file}`);
+    }
+  }
+
+  const documents = new Map<string, string>();
+  for (const file of actual.filter((file) => file.endsWith(".html"))) {
+    const html = await readFile(path.join(dist, file), "utf8");
+    if (/<script\b|\bon\w+\s*=|javascript:/i.test(html)) {
+      throw new Error(
+        `Browser scripts are not part of this static publication: ${file}`,
+      );
+    }
+    documents.set(file, html);
+  }
+
+  const reader = documents.get("hereeesjohnnyson/issue-01/index.html");
+  if (!reader) throw new Error("Missing issue reader.");
+  const pageSources = [...reader.matchAll(/<img\s[^>]*src="([^"]+)"/g)].map(
+    (match) => match[1],
+  );
+  if (
+    JSON.stringify(pageSources) !==
+    JSON.stringify(comicPages.map(([file]) => `/${file}`))
+  ) {
+    throw new Error("The issue must contain all five comic pages in order.");
+  }
+
+  // Check local links, image/style references, and navigation anchors in every page.
+  for (const [file, html] of documents) {
+    const route = file.endsWith("index.html")
+      ? `/${file.slice(0, -10)}`
+      : `/${file}`;
+    for (const match of html.matchAll(/\b(?:href|src)="([^"]+)"/g)) {
+      const reference = match[1];
+      if (!reference) continue;
+      const url = new URL(reference, `https://artshow.invalid${route}`);
+      if (url.origin !== "https://artshow.invalid") continue;
+      const target =
+        decodeURIComponent(url.pathname.slice(1)) +
+        (url.pathname.endsWith("/") ? "index.html" : "");
+      if (!actual.includes(target))
+        throw new Error(`Broken internal link in ${file}: ${reference}`);
+      if (url.hash) {
+        const targetHtml = documents.get(target);
+        const id = decodeURIComponent(url.hash.slice(1));
+        if (!targetHtml?.includes(`id="${id}"`))
+          throw new Error(`Missing anchor in ${file}: ${reference}`);
+      }
+    }
+  }
+}
+
+export async function buildSite(root: string): Promise<void> {
+  const dist = path.join(root, "dist");
+  await rm(dist, { recursive: true, force: true });
+  for (const file of publicFiles) {
+    const source = path.join(root, file);
+    if (!(await lstat(source)).isFile())
+      throw new Error(`Non-regular source asset: ${file}`);
+    const target = path.join(dist, file);
+    await mkdir(path.dirname(target), { recursive: true });
+    await copyFile(source, target);
+  }
+  await verifySite(dist);
+}
