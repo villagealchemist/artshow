@@ -1,0 +1,303 @@
+/* The shared workshop palette and typography come from /styles.css. */
+.saga a {
+  color: var(--lilac);
+  text-underline-offset: 0.25em;
+}
+
+.saga a:hover {
+  color: var(--silver);
+}
+
+.saga :is(a, summary):focus-visible {
+  outline: 3px solid #f0d5ff;
+  outline-offset: 5px;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 1;
+  padding: 0.75rem;
+  background: var(--ink);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.saga-shell {
+  width: min(100% - 2.5rem, 64rem);
+  margin: auto;
+  padding: 1.5rem 0 2.5rem;
+}
+
+.saga-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  font-size: 0.72rem;
+  line-height: 1.6;
+}
+
+.saga-nav a {
+  display: inline-block;
+  padding: 0.75rem 0;
+}
+
+.saga-nav span {
+  color: var(--muted);
+  font-size: 0.63rem;
+}
+
+.saga-masthead {
+  padding: 4rem 0 1.7rem;
+}
+
+.saga h1 {
+  font-size: clamp(2.8rem, 8.5vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: -0.055em;
+}
+
+.saga .eyebrow {
+  font-size: 0.65rem;
+  line-height: 1.8;
+}
+
+.saga-intro {
+  max-width: 39rem;
+  margin: 0 auto 3.5rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.85;
+}
+
+.saga-intro p:first-child {
+  color: var(--silver);
+  font:
+    normal 1.5rem/1.5 Georgia,
+    serif;
+}
+
+.saga-intro em {
+  color: var(--lilac);
+}
+
+.featured-issue {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 5rem);
+  padding: 2rem 0 3rem;
+  border-top: 1px solid #6c4d78;
+}
+
+.issue-art {
+  display: block;
+}
+
+.saga img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.saga h2 {
+  margin: 0 0 1.25rem;
+  color: var(--lilac);
+  font:
+    normal 2rem/1.1 Georgia,
+    serif;
+}
+
+.issue-note h2 {
+  font-size: clamp(2.6rem, 5vw, 4rem);
+  letter-spacing: -0.045em;
+}
+
+.issue-note > p:not(.eyebrow),
+.further-disturbances > p:not(.eyebrow) {
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.85;
+}
+
+.issue-note .eyebrow strong {
+  color: var(--silver);
+  font-weight: normal;
+}
+
+.issue-note .issue-colophon {
+  margin: 1.5rem 0;
+  font-size: 0.72rem;
+}
+
+.read-issue {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-top: 1px solid #4b354f;
+  border-bottom: 1px solid #4b354f;
+  font:
+    normal 1.25rem/1.4 Georgia,
+    serif;
+  text-decoration: none;
+}
+
+.further-disturbances {
+  border-top: 1px solid #6c4d78;
+  padding: 2rem 0;
+}
+
+.further-disturbances > p:not(.eyebrow) {
+  max-width: 39rem;
+}
+
+.saga-footer {
+  margin-top: 1.5rem;
+  padding-top: 2rem;
+  border-top: 1px dashed #72527d;
+  line-height: 1.8;
+}
+
+.saga-footer .dedication {
+  margin-bottom: 1rem;
+  color: var(--lilac);
+  font:
+    italic 1.1rem/1.7 Georgia,
+    serif;
+}
+
+.reader-shell {
+  width: min(100% - 1rem, 70.125rem);
+}
+
+.reader-shell > .saga-nav,
+.issue-header {
+  width: min(100% - 1.5rem, 43rem);
+  margin-inline: auto;
+}
+
+.issue-header {
+  padding: 2.5rem 0 2rem;
+  text-align: center;
+}
+
+.issue-header h1 {
+  margin-bottom: 1.5rem;
+  font-size: clamp(2.7rem, 7vw, 4.6rem);
+  text-transform: none;
+  line-height: 1.05;
+}
+
+.reader-note {
+  color: var(--muted);
+  font-size: 0.75rem;
+  line-height: 1.8;
+}
+
+.page-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin: 1rem 0 0;
+  font-size: 0.75rem;
+}
+
+.page-nav span {
+  padding-right: 0.75rem;
+  color: var(--muted);
+}
+
+.page-nav a {
+  display: inline-flex;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.comic-page {
+  margin: 0 0 3rem;
+  scroll-margin-top: 1rem;
+}
+
+.comic-page > a {
+  display: block;
+}
+
+.comic-page figcaption {
+  padding: 0.85rem 0.5rem 0;
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.7;
+}
+
+.comic-page details {
+  max-width: 43rem;
+  margin-top: 0.5rem;
+}
+
+.comic-page summary {
+  width: fit-content;
+  min-height: 2.75rem;
+  padding-block: 0.65rem;
+  color: var(--lilac);
+  cursor: pointer;
+}
+
+.page-text {
+  padding: 0 0.75rem 0.5rem;
+  border-left: 1px solid var(--edge);
+  color: var(--silver);
+  font-size: 0.85rem;
+  line-height: 1.85;
+}
+
+.reader-end {
+  text-align: center;
+}
+
+.reader-end nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+  margin: 1rem 0 2rem;
+  font-size: 0.8rem;
+}
+
+.reader-end a {
+  padding: 0.75rem 0;
+}
+
+@media (max-width: 600px) {
+  .saga-masthead {
+    padding-top: 2.5rem;
+  }
+
+  .saga-masthead .eyebrow {
+    max-width: 16rem;
+    margin-inline: auto;
+  }
+
+  .saga-intro {
+    margin-bottom: 2rem;
+  }
+
+  .featured-issue {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .saga-nav > span {
+    display: none;
+  }
+}

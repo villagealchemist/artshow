@@ -1,0 +1,33 @@
+{
+  "name": "villagealchemist-artshow",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=26 <27"
+  },
+  "scripts": {
+    "compile:tools": "tsc -p tsconfig.tools.json",
+    "build": "npm run compile:tools --silent && node .build-tools/scripts/build.js",
+    "verify": "node .build-tools/scripts/build.js verify",
+    "check:source": "npm run compile:tools --silent && node .build-tools/scripts/check-source.js",
+    "typecheck": "tsc -p tsconfig.json",
+    "lint": "eslint eslint.config.ts scripts --max-warnings 0 --report-unused-disable-directives",
+    "format:check": "prettier --check --ignore-unknown .",
+    "format": "prettier --write --ignore-unknown .",
+    "test": "npm run compile:tools --silent && node --test .build-tools/scripts/site.test.js",
+    "check": "npm run check:source && npm run typecheck && npm run lint && npm run format:check && npm run test && npm run build",
+    "dev": "npm run build && wrangler dev --port 42069 --inspector-port 0",
+    "deploy": "npm run build && wrangler deploy"
+  },
+  "devDependencies": {
+    "@types/node": "26.1.2",
+    "eslint": "10.15.0",
+    "eslint-config-prettier": "10.1.8",
+    "jiti": "2.7.0",
+    "prettier": "3.9.6",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.74.0",
+    "wrangler": "4.168.0"
+  }
+}

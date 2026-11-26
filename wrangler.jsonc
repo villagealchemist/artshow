@@ -1,0 +1,12 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "villagealchemist-art",
+  "compatibility_date": "2026-08-01",
+  "workers_dev": true,
+  // Custom domains are deliberately unconfigured until routing is approved.
+  "assets": {
+    "directory": "./dist",
+    "html_handling": "force-trailing-slash",
+    "not_found_handling": "404-page",
+  },
+}

@@ -1,0 +1,144 @@
+/* Village Alchemist's shared workshop palette and type. */
+:root {
+  color-scheme: dark;
+  --ink: #120a17;
+  --lilac: #d9c5ef;
+  --muted: #ac98ba;
+  --silver: #e7e1e9;
+  --edge: #795589;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--ink);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  color: var(--silver);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  background:
+    radial-gradient(ellipse at 50% -10%, #3b2150 0, transparent 42rem),
+    var(--ink);
+}
+
+.masthead {
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 1.35rem;
+  color: var(--muted);
+  font-size: 0.64rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  font:
+    normal clamp(3.2rem, 12vw, 5.7rem)/0.84 Georgia,
+    serif;
+  letter-spacing: -0.065em;
+  text-transform: uppercase;
+  text-shadow: 0 0 28px #b779d055;
+}
+
+h1 em {
+  display: block;
+  color: var(--lilac);
+  font-style: normal;
+}
+
+.title-rule {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  max-width: 17rem;
+  margin: 1.5rem auto;
+  color: var(--lilac);
+}
+
+.title-rule span {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--edge));
+}
+.title-rule span:last-child {
+  transform: scaleX(-1);
+}
+
+.spell {
+  margin: 0;
+  color: var(--lilac);
+  font:
+    italic 1.37rem Georgia,
+    serif;
+}
+
+footer {
+  color: #ac98ba;
+  text-align: center;
+  font-size: 0.68rem;
+  line-height: 1.55;
+}
+footer p {
+  margin: 0;
+}
+footer p:first-child {
+  color: #c2b2ca;
+}
+footer small {
+  display: block;
+  margin-top: 1rem;
+  color: #ac98ba;
+  font-size: 0.59rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.art-masthead {
+  padding: 4rem 0 3.5rem;
+}
+.art-intro {
+  margin: 1.5rem auto 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.85;
+}
+.art-home .art-feature {
+  max-width: 50rem;
+  margin: auto;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+}
+.art-postscript {
+  margin: 1rem 0 2.5rem;
+  text-align: center;
+  color: var(--muted);
+  font:
+    italic 1.1rem/1.6 Georgia,
+    serif;
+}
+
+@media (max-width: 600px) {
+  .art-masthead {
+    padding: 2.5rem 0;
+  }
+  .art-home .art-feature {
+    grid-template-columns: 1fr;
+  }
+  .desktop-break {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
