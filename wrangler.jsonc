@@ -5,7 +5,7 @@
   "workers_dev": true,
   "preview_urls": true,
   "previews": {},
-  // Custom domains are deliberately unconfigured until routing is approved.
+  "routes": [{ "pattern": "villagealchemist.art", "custom_domain": true }],
   "assets": {
     "directory": "./dist",
     "html_handling": "force-trailing-slash",
