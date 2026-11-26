@@ -2,7 +2,7 @@
   <img src="/ASSets/tinydeskiknow.png" alt="Artshow">
 </p>
 
-# Village Alchemist / Artshow
+# villagealchemist / Artshow
 
 An independent home for illustrated sagas and other experiments by MJ.
 Plain HTML and CSS, served by Cloudflare Workers Static Assets.
