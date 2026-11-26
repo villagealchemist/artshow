@@ -3,6 +3,8 @@
   "name": "villagealchemist-art",
   "compatibility_date": "2026-08-01",
   "workers_dev": true,
+  "preview_urls": true,
+  "previews": {},
   // Custom domains are deliberately unconfigured until routing is approved.
   "assets": {
     "directory": "./dist",
