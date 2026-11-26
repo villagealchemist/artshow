@@ -1,10 +1,10 @@
 const pages = [...document.querySelectorAll<HTMLElement>(".comic-page")];
 
 function pagePath(index: number): string {
-  return `/h${"e".repeat(index + 1)}resjohnnyson/issue-01/`;
+  return `/h${"e".repeat(index + 1)}resjohnnyson/`;
 }
 
-// A shared page address opens the matching illustration even without a fragment.
+// Old fragment links still open the matching illustration, then become clean page URLs.
 const linkedPage = pages.find((page) => `#${page.id}` === location.hash);
 const routeIndex = pages.findIndex(
   (_, index) => pagePath(index) === location.pathname,
@@ -25,9 +25,7 @@ function updateAddress(): void {
   }
   const activePage = pages[activeIndex];
   if (!activePage) return;
-  const inHeader =
-    activeIndex === 0 && activePage.getBoundingClientRect().top > marker;
-  const next = `${pagePath(activeIndex)}${location.search}${inHeader ? "" : `#${activePage.id}`}`;
+  const next = `${pagePath(activeIndex)}${location.search}`;
   if (`${location.pathname}${location.search}${location.hash}` !== next) {
     // Replace, so reading five pages does not fill the browser's Back history.
     history.replaceState(history.state, "", next);
@@ -42,4 +40,5 @@ function scheduleUpdate(): void {
 
 addEventListener("scroll", scheduleUpdate, { passive: true });
 addEventListener("resize", scheduleUpdate);
+addEventListener("hashchange", scheduleUpdate);
 scheduleUpdate();

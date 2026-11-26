@@ -41,12 +41,12 @@ export const copiedFiles = [
   "_redirects",
   "styles.css",
   "heresjohnnyson/index.html",
-  "heresjohnnyson/issue-01/index.html",
+  "heresjohnnyson/about/index.html",
   ...comicPages.map(([file]) => file),
 ] as const;
 
 export const readerFiles = comicPages.map(
-  (_, index) => `h${"e".repeat(index + 1)}resjohnnyson/issue-01/index.html`,
+  (_, index) => `h${"e".repeat(index + 1)}resjohnnyson/index.html`,
 );
 export const sourceFiles = [...copiedFiles, "src/reader.ts"];
 export const publicFiles = [
@@ -150,10 +150,7 @@ export async function buildSite(root: string): Promise<void> {
   for (const file of readerFiles.slice(1)) {
     const target = path.join(dist, file);
     await mkdir(path.dirname(target), { recursive: true });
-    await copyFile(
-      path.join(dist, "heresjohnnyson/issue-01/index.html"),
-      target,
-    );
+    await copyFile(path.join(dist, "heresjohnnyson/index.html"), target);
   }
   const reader = ts.transpileModule(
     await readFile(path.join(root, "src/reader.ts"), "utf8"),
