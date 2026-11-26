@@ -1,7 +1,9 @@
 # Artshow
 
-The independent Village Alchemist art site. Production branch: `mainframe`.
+The independent villagealchemist art site. Production branch: `mainframe`.
 
+- The name is exactly `villagealchemist`: one word, all lowercase, everywhere,
+  including page titles, metadata, accessible labels, copy, and documentation.
 - Keep this a lightweight static HTML/CSS site. Executable source is TypeScript.
 - Preserve the plum, lilac, silver, serif, and monospace design language.
 - Preserve the five approved comic images byte for byte and in order.
