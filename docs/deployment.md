@@ -29,7 +29,8 @@ private photo archive, manifests, README screenshot, build tools, or API code.
 
 1. Run `npm ci`, `npm run check`, and `npm run deploy -- --dry-run`.
 2. Inspect `/`, `/heresjohnnyson/`, and `/heresjohnnyson/about/` at desktop
-   and mobile sizes. Read all five pages in order and test the text disclosures.
+   and mobile sizes, including landscape. Swipe all five pages in order; test
+   arrow keys, zoom/fit, rotation, and the text dialog.
 3. Verify the account with `npx wrangler whoami`, then inspect the existing
    Worker's domains and deployments. Record the current art Worker version
    before an update with `npx wrangler deployments list`.
@@ -57,7 +58,7 @@ and direct page addresses after routing changes.
 The reader adds one e before the r for each illustrated page, from
 `/heresjohnnyson/` to `/heeeeeresjohnnyson/`. These are complete addresses, with
 no issue suffix or page fragment. It replaces the current history entry as the
-reader scrolls. Every spelling serves the complete issue, so refresh and
+reader turns pages. Every spelling serves the complete issue, so refresh and
 shared links work. Older page fragments still locate their illustration before
 the enhancement replaces them with the matching clean address.
 

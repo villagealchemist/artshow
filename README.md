@@ -8,20 +8,22 @@ An independent home for illustrated sagas and other experiments by MJ.
 Plain HTML and CSS, served by Cloudflare Workers Static Assets.
 
 - `/`: the art collection
-- `/heresjohnnyson/`: page 1 and the continuous reader for free Issue #001
+- `/heresjohnnyson/`: page 1 and the swipeable reader for free Issue #001
 - `/heeresjohnnyson/` through `/heeeeeresjohnnyson/`: pages 2 through 5
 - `/heresjohnnyson/about/`: introduction, future issues, and dedication
 
-The five approved comic pages are preserved byte for byte. The reader uses
-continuous scrolling, native page links, full-size image links, and expandable
-page descriptions and dialogue. A small TypeScript enhancement updates the URL
-as you scroll: one e before the r for page 1, two for page 2, through five for
-page 5. The e-count is the entire page address: no issue suffix or page fragment.
-Each spelling also works as a direct link, including on refresh. Legacy issue
-paths and page fragments continue to open the matching page, then become clean
-addresses.
-The comic remains readable without scripts. There are no third-party fonts,
-tracking, or runtime dependencies.
+The five approved comic pages are preserved byte for byte. The comic opens
+immediately in a full-viewport gallery, fitted to portrait or landscape screens.
+Swipe horizontally, use the arrow buttons, or press the left/right arrow keys
+to turn pages. Tap the artwork or choose Zoom to enlarge it in place; scroll or
+pan to read, then choose Fit (or press Escape) to return to the whole page.
+The Text button opens the current page's description and dialogue.
+
+A small TypeScript enhancement keeps the e-count URL in sync: one e before the
+r for page 1, two for page 2, through five for page 5. Page turns do not reload
+the document. Direct links, refresh, and legacy issue/fragment links work.
+The gallery remains swipeable without scripts. There are no third-party fonts,
+tracking, gallery libraries, or runtime dependencies.
 
 ## Develop
 
