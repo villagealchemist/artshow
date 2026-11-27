@@ -11,6 +11,8 @@ The independent villagealchemist art site. Production branch: `mainframe`.
   font overrides, forced uppercase titles, or decorative title treatments.
 - Comic page URLs use only the e-count slug and trailing slash. Keep issue
   numbers in the copy, without appending issue paths or page fragments.
+- The comic opens directly as a viewport-fitted, horizontally swipeable gallery.
+  Keep zoom and dialogue inside the reader, with keyboard and touch navigation.
 - Preserve the five approved comic images byte for byte and in order.
 - Never add private photographs, source archives, or lore manifests to this repo.
 - Do not inspect, import, or modify `sites/jux` in any related checkout.
